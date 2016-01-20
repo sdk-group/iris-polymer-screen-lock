@@ -1,0 +1,72 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
+
+
+<dom-module id="iris-screen-lock">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 999;
+        opacity: 0.7;
+        background: #333;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      
+      paper-spinner {
+        width: 250px;
+        height: 250px;
+      }
+      
+      paper-spinner {
+        display: block;
+      }
+      
+      paper-spinner::shadow .circle {
+        border-width: 60px;
+      }
+    </style>
+
+    <paper-spinner alt$="{{message}}" active></paper-spinner>
+    <div class="message">
+      {{message}}
+    </div>
+  </template>
+
+  <script>
+    'use strict';
+    (function() {
+
+      Polymer({
+        is: 'iris-screen-lock',
+        properties: {
+          message: {
+            type: String,
+            value: "Подождите"
+          }
+        },
+        attached() {
+          this.hidden = true;
+        },
+        ready() {
+
+        },
+        lock() {
+          this.hidden = false;
+        },
+        unlock() {
+          this.hidden = true;
+        }
+      });
+    })();
+  </script>
+
+</dom-module>
