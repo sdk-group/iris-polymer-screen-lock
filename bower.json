@@ -1,0 +1,23 @@
+{
+  "name": "iris-polymer-screen-lock",
+  "homepage": "https://github.com/sdk-group/iris-polymer-screen-lock",
+  "authors": [
+    "artificial-life <proteus.protocol@gmail.com>"
+  ],
+  "description": "screen locker with spinner",
+  "main": "iris-screen-lock.html",
+  "moduleType": [],
+  "keywords": [
+    "spinner",
+    "screen",
+    "lock"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
