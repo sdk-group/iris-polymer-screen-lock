@@ -7,37 +7,47 @@
     <style include="shared-styles"></style>
     <style>
       :host {
-        display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
+        @apply(--layout);
+        @apply(--layout-fit);
+        @apply(--layout-center-justified);
+        z-index: 997;
+      }
+      
+      .content {
+        @apply(--layout-center-justified);
+        @apply(--layout-vertical);
+        @apply(--layout-center);
+        font-size: 25px;
         z-index: 999;
-        opacity: 0.7;
-        background: #333;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
+      }
+      
+      .content .message {
+        margin-top: 25px;
+        color: var(--mydoc-red-800);
       }
       
       paper-spinner {
         width: 250px;
         height: 250px;
-      }
-      
-      paper-spinner {
         display: block;
       }
       
-      paper-spinner::shadow .circle {
-        border-width: 60px;
+      #backdrop {
+        @apply(--layout-fit);
+        opacity: 0.6;
+        background: var(--mydoc-beige-200);
+        z-index: 998;
       }
     </style>
 
-    <paper-spinner alt$="{{message}}" active></paper-spinner>
-    <div class="message">
-      {{message}}
+    <div class="content">
+      <paper-spinner alt$="{{message}}" active></paper-spinner>
+      <div class="message">
+        {{message}}
+      </div>
+    </div>
+
+    <div id='backdrop'>
     </div>
   </template>
 
