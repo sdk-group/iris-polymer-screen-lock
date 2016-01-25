@@ -31,13 +31,6 @@
         height: 250px;
         display: block;
       }
-      
-      #backdrop {
-        @apply(--layout-fit);
-        opacity: 0.6;
-        background: var(--mydoc-beige-200);
-        z-index: 998;
-      }
     </style>
 
     <div class="content">
@@ -47,8 +40,7 @@
       </div>
     </div>
 
-    <div id='backdrop'>
-    </div>
+
   </template>
 
   <script>
@@ -63,11 +55,18 @@
             value: "Подождите"
           }
         },
+        behaviors: [
+          Polymer.IronOverlayBehavior,
+        ],
         ready() {
           this.hidden = true;
           this.timer = false;
+          this.set('withBackdrop', true);
+          this.set('noCancelOnOutsideClick', true);
+          this.set('noCancelOnEscKey', true);
         },
         lock() {
+          this.open();
           if (this.timer) clearTimeout(this.timer);
 
           this.timer = setTimeout(() => {
@@ -77,6 +76,7 @@
           this.hidden = false;
         },
         unlock() {
+          this.close();
           if (this.timer) clearTimeout(this.timer);
           this.hidden = true;
         }
