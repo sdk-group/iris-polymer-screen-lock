@@ -13,7 +13,7 @@
         z-index: 997;
       }
       
-      .content {
+      .locker-content {
         @apply(--layout-center-justified);
         @apply(--layout-vertical);
         @apply(--layout-center);
@@ -21,7 +21,7 @@
         z-index: 999;
       }
       
-      .content .message {
+      .locker-content .message {
         margin-top: 25px;
         color: var(--mydoc-red-800);
       }
@@ -33,7 +33,7 @@
       }
     </style>
 
-    <div class="content">
+    <div class="locker-content">
       <paper-spinner alt$="{{message}}" active></paper-spinner>
       <div class="message">
         {{message}}
