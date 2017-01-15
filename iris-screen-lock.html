@@ -1,7 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
 
-
 <dom-module id="iris-screen-lock">
   <template>
     <style include="shared-styles"></style>
@@ -10,9 +9,10 @@
         @apply(--layout);
         @apply(--layout-fit);
         @apply(--layout-center-justified);
+        --paper-spinner-stroke-width: 60px;
         z-index: 997;
       }
-      
+
       .locker-content {
         @apply(--layout-center-justified);
         @apply(--layout-vertical);
@@ -20,17 +20,18 @@
         font-size: 25px;
         z-index: 999;
       }
-      
+
       .locker-content .message {
         margin-top: 25px;
         color: var(--mydoc-red-800);
       }
-      
+
       paper-spinner {
         width: 250px;
         height: 250px;
         display: block;
       }
+
     </style>
 
     <div class="locker-content">
@@ -40,11 +41,10 @@
       </div>
     </div>
 
-
   </template>
 
   <script>
-    (function() {
+    (function () {
       'use strict';
 
       Polymer({
@@ -55,9 +55,7 @@
             value: "Подождите"
           }
         },
-        behaviors: [
-          Polymer.IronOverlayBehavior,
-        ],
+        behaviors: [Polymer.IronOverlayBehavior],
         ready() {
           this.hidden = true;
           this.timer = false;
@@ -67,7 +65,8 @@
         },
         lock() {
           this.open();
-          if (this.timer) clearTimeout(this.timer);
+          if (this.timer)
+            clearTimeout(this.timer);
 
           this.timer = setTimeout(() => {
             this.unlock();
@@ -78,7 +77,8 @@
         },
         unlock() {
           this.close();
-          if (this.timer) clearTimeout(this.timer);
+          if (this.timer)
+            clearTimeout(this.timer);
           this.hidden = true;
           return Promise.resolve(true);
         }
